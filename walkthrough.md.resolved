@@ -1,0 +1,49 @@
+# Next Word Prediction LSTM Project
+
+I have successfully created the full Next Word Prediction project within the `f:\Gen_AI\Makeup_exam_model` directory. This project implements a sequential LSTM model to predict the next word based on English sentence patterns. 
+
+## Included Files
+
+### 1. `dataset.txt`
+I generated a custom dummy dataset containing 250 meaningful English sentences covering topics like AI, technology, science, and everyday life. This provides a diverse vocabulary for the model to learn from, satisfying Task 1.
+
+### 2. `requirements.txt`
+Contains the necessary libraries (`tensorflow`, `numpy`, `matplotlib`, `scikit-learn`).
+
+### 3. `train.py`
+This script handles Task 2, Task 3, and Task 5:
+- **NLP Preprocessing:** Reads the dataset, converts text to lowercase, tokenizes it, creates N-gram sequences, and pads them. It prints the vocabulary size, maximum sequence length, and sample sequences to the console.
+- **Model Development:** Constructs a sequential deep learning model with an `Embedding` layer, an `LSTM` layer (150 units), and a `Dense` output layer with softmax activation.
+- **Training:** Compiles and trains the model for 100 epochs, saving the model (`next_word_model.h5`) and tokenizer (`tokenizer.pickle`).
+- **Performance Visualization:** Generates and saves a training accuracy and loss graph as `training_history.png`.
+
+### 4. `predict.py`
+This script addresses Task 4 (and additional optional rubrics):
+- Loads the trained model and tokenizer.
+- Provides a command-line interface for you to enter incomplete sentences.
+- Outputs the **Top 3 predicted words** with their confidence levels.
+- Features a **Sentence Auto-Completion** function that suggests the next 3 words sequentially.
+
+## How to Run the Project
+
+Due to a local environment restriction, I wasn't able to execute the Python scripts directly on my end. You will need to run the following commands in your own terminal (VS Code or Command Prompt).
+
+**Step 1: Install Dependencies**
+```bash
+cd f:\Gen_AI\Makeup_exam_model
+pip install -r requirements.txt
+```
+
+**Step 2: Train the Model**
+Run the training script to build the model, train it on the dataset, and generate the visualizations. This might take a few minutes.
+```bash
+python train.py
+```
+*This will output the preprocessing metrics to your console and create `next_word_model.h5`, `tokenizer.pickle`, and `training_history.png`.*
+
+**Step 3: Predict Next Words**
+Once the model is trained, start the interactive prediction module:
+```bash
+python predict.py
+```
+*You can type phrases like "Machine learning can" or "Artificial intelligence is" to see the model's predictions.*

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Next Word Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Load FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    <div class="glow-orb top-left"></div>
+    <div class="glow-orb bottom-right"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
+            <h1>Next Word <span>Predictor</span></h1>
+            <p>Powered by LSTM Deep Learning Networks</p>
+        </header>
+
+        <main>
+            <div class="glass-panel main-panel">
+                <label for="text-input" class="input-label">Enter your sentence fragment:</label>
+                
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-pen-nib input-icon"></i>
+                        <input type="text" id="text-input" placeholder="e.g. Machine learning can improve..." autocomplete="off">
+                    </div>
+                    <button id="predict-btn" class="primary-btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Predict
+                    </button>
+                </div>
+
+                <div id="status-message" class="status-message hidden">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="glass-panel results-panel">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-ranking-star"></i> Top Predictions</h2>
+                    <div id="loading-spinner" class="spinner hidden"></div>
+                </div>
+                
+                <div id="predictions-container" class="predictions-grid">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-keyboard"></i>
+                        <p>Click "Predict" to see the next words</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel dashboard-panel">
+                <h2><i class="fa-solid fa-chart-line"></i> Performance Dashboard</h2>
+                <div class="graph-container">
+                    <img src="/training_graph" alt="Training Accuracy and Loss Graph" id="graph-img">
+                    <div id="graph-error" class="graph-error hidden">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <h3>Model Not Trained Yet!</h3>
+                        <p>Run <code>python train.py</code> in your terminal to train the model and generate this dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Designed for Advanced NLP Tasks</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
